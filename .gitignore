@@ -17,6 +17,9 @@ key.properties
 *.p12
 *.mobileprovision
 
+# generated standalone single-file build (regenerated on every deploy)
+www/hidayah.html
+
 # misc
 .DS_Store
 Thumbs.db

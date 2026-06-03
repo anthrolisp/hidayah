@@ -28,6 +28,7 @@ function renderChrome() {
   document.getElementById("footer-text").innerHTML = meta.footer;
 
   const nav = document.getElementById("nav");
+  nav.replaceChildren();
   sections.forEach((s) => nav.append(el("a", { href: `#${s.id}` }, s.nav)));
 }
 
@@ -129,6 +130,7 @@ function moveCard(move) {
 // ---------- render: sections by type ----------
 function renderSections() {
   const main = document.getElementById("main");
+  main.replaceChildren();
 
   sections.forEach((s) => {
     const sec = el("section", { id: s.id });
@@ -244,11 +246,34 @@ function initFontSize() {
   document.getElementById("fsReset").addEventListener("click", () => { fs = 1; applyFS(); });
 }
 
+// ---------- save a local copy (portable single file, TiddlyWiki-style) ----------
+async function saveLocalCopy() {
+  let html;
+  try {
+    // live site: download the prebuilt, fully self-contained single file
+    const res = await fetch("hidayah.html", { cache: "no-store" });
+    if (!res.ok) throw new Error("not found");
+    html = await res.text();
+  } catch (e) {
+    // standalone / offline: this page is already self-contained — serialize it
+    html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+  }
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "hidayah.html";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
 // ---------- boot ----------
 renderChrome();
 renderSections();
 initTheme();
 initFontSize();
+
+const saveBtn = document.getElementById("saveCopy");
+if (saveBtn) saveBtn.addEventListener("click", saveLocalCopy);
 
 // ---------- offline service worker (web/PWA only; harmless in Capacitor) ----------
 if ("serviceWorker" in navigator) {

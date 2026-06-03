@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "serve": "npx serve www -l 8080",
+    "build:standalone": "node build-standalone.js",
     "cap:init": "npx cap init \"Hidayah\" com.justinshaffner.hidayah --web-dir=www",
     "cap:add:ios": "npx cap add ios",
     "cap:add:android": "npx cap add android",

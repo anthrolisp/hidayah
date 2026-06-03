@@ -1,7 +1,7 @@
 // sw.js — offline caching for the web/PWA build.
 // Capacitor serves files locally and ignores this, so it's safe everywhere.
 // Bump CACHE when you change any cached file.
-const CACHE = "hidayah-v15";
+const CACHE = "hidayah-v16";
 
 const CORE = [
   "./",
