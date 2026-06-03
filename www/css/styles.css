@@ -97,6 +97,8 @@ section{padding:2.8rem 0 1rem;}
 .dim{color:var(--ink-dim);}
 /* ﷺ and similar Arabic glyphs/ligatures — force the Arabic font so they always render */
 .sym{font-family:'Amiri',serif;line-height:1;}
+/* small, unobtrusive source/citation line */
+.src{display:block;margin-top:.5rem;font-size:.78em;color:var(--ink-dim);opacity:.75;letter-spacing:.02em;}
 
 .tag{display:inline-block;font-size:.62em;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:.1rem .5rem;margin-left:.4rem;vertical-align:middle;}
 .tag.fard{color:var(--gold);border:1px solid var(--gold);}

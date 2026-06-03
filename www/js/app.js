@@ -144,7 +144,7 @@ function renderSections() {
         grid.append(el("div", { class: "prayer-card" },
           el("div", { class: "name" }, p.name, el("span", {}, p.arabicLabel)),
           el("div", { class: "when" }, p.when),
-          el("div", { class: "rakah-num", html: `${p.rakah}<br><small>rak'ah</small>` })
+          el("div", { class: "rakah-num", html: `${p.rakah}<br><small>rak'ah${p.rakah === 1 ? "" : "s"}</small>` })
         ));
       });
       sec.append(grid);
