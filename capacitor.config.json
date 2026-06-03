@@ -1,0 +1,20 @@
+// capacitor.config.json
+// Change appId to your own reverse-domain identifier before building.
+// `webDir` points at the folder holding index.html and assets.
+{
+  "appId": "com.justinshaffner.hidayah",
+  "appName": "Hidayah",
+  "webDir": "www",
+  "backgroundColor": "#0d1117",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 800,
+      "backgroundColor": "#0d1117",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0d1117"
+    }
+  }
+}

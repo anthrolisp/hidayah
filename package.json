@@ -1,0 +1,27 @@
+{
+  "name": "hidayah",
+  "version": "1.0.0",
+  "description": "Hidayah — A Companion for New Muslims. Begins with the ablution (wudu) and the prayer (salat).",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "serve": "npx serve www -l 8080",
+    "cap:init": "npx cap init \"Hidayah\" com.justinshaffner.hidayah --web-dir=www",
+    "cap:add:ios": "npx cap add ios",
+    "cap:add:android": "npx cap add android",
+    "cap:sync": "npx cap sync",
+    "cap:open:ios": "npx cap open ios",
+    "cap:open:android": "npx cap open android"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
+    "serve": "^14.0.0"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/ios": "^6.0.0",
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/status-bar": "^6.0.0",
+    "@capacitor/splash-screen": "^6.0.0"
+  }
+}

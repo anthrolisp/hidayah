@@ -1,0 +1,158 @@
+/* ============================================================
+   styles.css — theme tokens + layout for Wudu & Salat
+   ============================================================ */
+@import 'fonts.css';
+
+:root{
+  --fs:1;
+  --bg:#0d1117; --bg2:#16202b;
+  --panel:#141b22; --panel2:#1a2330;
+  --ink:#e8e3d6; --ink-dim:#9aa3ab;
+  --gold:#c9a24b; --gold-soft:#d9bd78;
+  --teal:#5fa3a0; --line:#2a3543;
+  --arabic:#f2ead4;
+  --icon-stroke:#d9bd78;
+  --shadow:rgba(0,0,0,.45);
+  --chip-on-ink:#0d1117;
+  --halo:rgba(201,162,75,.16);
+}
+html[data-theme="light"]{
+  --bg:#f6f1e7; --bg2:#fbf7ee;
+  --panel:#fffdf8; --panel2:#f3ecdd;
+  --ink:#2c2620; --ink-dim:#6f6555;
+  --gold:#9c7521; --gold-soft:#8a6519;
+  --teal:#2f7c79; --line:#e0d6c2;
+  --arabic:#3a2f1d;
+  --icon-stroke:#5c4a24;
+  --shadow:rgba(120,100,60,.18);
+  --chip-on-ink:#fffdf8;
+  --halo:rgba(156,117,33,.12);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:radial-gradient(1200px 600px at 50% -10%, var(--bg2) 0%, transparent 60%),var(--bg);
+  color:var(--ink);
+  font-family:'Spectral',Georgia,serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+  padding-bottom:5rem;
+  font-size:calc(1rem * var(--fs));
+  transition:background-color .4s ease,color .4s ease;
+  /* respect device safe areas (notch / home indicator) when wrapped */
+  padding-top:env(safe-area-inset-top);
+}
+
+/* ---------- controls ---------- */
+.controls{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+  padding:calc(.55rem + env(safe-area-inset-top)) .9rem .55rem;
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.controls .grp{display:flex;align-items:center;gap:.4rem;}
+.controls .lbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);margin-right:.15rem;}
+.ctl-btn{background:transparent;border:1px solid var(--line);color:var(--ink-dim);font-family:'Cormorant Garamond',serif;border-radius:999px;cursor:pointer;transition:.18s;display:grid;place-items:center;line-height:1;}
+.ctl-btn:hover{color:var(--gold);border-color:var(--gold);}
+.ctl-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.ctl-btn.size{width:2rem;height:2rem;font-weight:600;}
+.ctl-btn.size.minus{font-size:1rem;}
+.ctl-btn.size.plus{font-size:1.35rem;}
+.ctl-btn.theme{height:2rem;padding:0 .85rem;gap:.4rem;font-family:'Spectral',serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;}
+.ctl-btn.theme svg{width:.95rem;height:.95rem;stroke:currentColor;fill:none;stroke-width:1.6;}
+.reset-size{font-family:'Spectral',serif;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;color:var(--ink-dim);cursor:pointer;text-decoration:underline;text-underline-offset:3px;opacity:.7;}
+.reset-size:hover{color:var(--gold);opacity:1;}
+.reset-size:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* ---------- header ---------- */
+header{text-align:center;padding:3.2rem 1.2rem 2.2rem;border-bottom:1px solid var(--line);position:relative;}
+header::after{content:"\06DE";display:block;color:var(--gold);font-size:1.4em;margin-top:1rem;opacity:.7;}
+header .kicker{letter-spacing:.42em;text-transform:uppercase;font-size:.66em;color:var(--gold);margin-bottom:1rem;}
+header h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2.1rem,7vw,3.1rem);line-height:1.1;color:var(--ink);}
+header p{color:var(--ink-dim);max-width:34ch;margin:1rem auto 0;font-size:.95em;font-style:italic;}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:3.1rem;z-index:20;display:flex;justify-content:center;gap:.5rem;padding:.7rem;background:color-mix(in srgb, var(--bg) 82%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);flex-wrap:wrap;}
+nav a{color:var(--ink-dim);text-decoration:none;font-size:.78em;letter-spacing:.12em;text-transform:uppercase;padding:.45rem .9rem;border:1px solid var(--line);border-radius:999px;transition:.2s;}
+nav a:hover{color:var(--gold);border-color:var(--gold);}
+nav a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+main{max-width:640px;margin:0 auto;padding:0 1.1rem;}
+section{padding:2.8rem 0 1rem;}
+.section-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.6rem;}
+.section-head .num{font-family:'Cormorant Garamond',serif;font-size:2.4em;color:var(--gold);line-height:1;font-weight:600;}
+.section-head h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.9em;color:var(--ink);}
+.section-head .sub{display:block;font-size:.7em;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);margin-top:.2rem;}
+.lede{color:var(--ink-dim);margin-bottom:1rem;font-size:.92em;}
+
+/* ---------- wudu steps ---------- */
+.steps{counter-reset:step;}
+.step{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);}
+.step:last-child{border-bottom:none;}
+.step .dot{flex:0 0 2em;height:2em;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:.9em;font-family:'Cormorant Garamond',serif;margin-top:.15rem;}
+.step .body h4{font-weight:600;font-size:1.02em;color:var(--ink);margin-bottom:.15rem;}
+.step .body p{color:var(--ink-dim);font-size:.92em;}
+.rt{color:var(--gold-soft);font-weight:600;}
+.dim{color:var(--ink-dim);}
+
+.tag{display:inline-block;font-size:.62em;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:.1rem .5rem;margin-left:.4rem;vertical-align:middle;}
+.tag.fard{color:var(--gold);border:1px solid var(--gold);}
+.tag.sunnah{color:var(--ink-dim);border:1px solid var(--ink-dim);}
+
+/* ---------- prayer count cards ---------- */
+.rakah-grid{display:grid;grid-template-columns:1fr;gap:.6rem;margin-bottom:1.4rem;}
+.prayer-card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.prayer-card .name{font-weight:600;font-size:1.1em;}
+.prayer-card .name span{display:block;font-size:.72em;color:var(--ink-dim);letter-spacing:.1em;text-transform:uppercase;font-weight:400;}
+.prayer-card .when{font-size:.82em;color:var(--teal);font-style:italic;flex:1;text-align:left;padding-left:.6rem;}
+.rakah-num{font-family:'Cormorant Garamond',serif;font-size:2.1em;color:var(--gold);font-weight:600;line-height:1;text-align:center;}
+.rakah-num small{font-size:.72em;color:var(--ink-dim);letter-spacing:.1em;}
+
+/* ---------- notes ---------- */
+.note{background:var(--panel);border-left:3px solid var(--teal);padding:.9rem 1rem;border-radius:0 8px 8px 0;font-size:.88em;color:var(--ink-dim);margin:1.2rem 0;}
+.note.warn{border-left-color:var(--gold);}
+.note b{color:var(--teal);font-weight:600;}
+.note.warn b{color:var(--gold);}
+
+/* ---------- prayer move cards ---------- */
+.move{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.2rem;margin-bottom:1rem;position:relative;}
+.move-top{display:flex;gap:1rem;align-items:flex-start;}
+.figure{flex:0 0 96px;width:96px;height:150px;display:grid;place-items:center;background:radial-gradient(60% 48% at 50% 50%, var(--halo) 0%, transparent 74%);border-radius:10px;}
+.pose{width:100%;height:100%;background:var(--icon-stroke);
+  -webkit-mask-position:center;mask-position:center;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-size:contain;mask-size:contain;
+  filter:drop-shadow(0 1px 2px var(--shadow));transition:background-color .4s ease;}
+.figure.pair{flex:0 0 168px;width:168px;display:flex;gap:8px;align-items:flex-start;justify-content:center;}
+.figure.pair .fwrap{display:flex;flex-direction:column;align-items:center;flex:1;}
+.figure.pair .fwrap .figure{width:100%;flex:none;height:128px;}
+.figure.pair figcaption{font-size:.56em;color:var(--ink-dim);letter-spacing:.05em;margin-top:2px;text-transform:uppercase;min-height:2.4em;line-height:1.2;display:flex;align-items:flex-start;justify-content:center;text-align:center;}
+
+.move-head h4{font-family:'Cormorant Garamond',serif;font-size:1.3em;font-weight:600;color:var(--gold-soft);margin-bottom:.15rem;}
+.move-head .pos{font-size:.62em;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.85;}
+.reps{display:inline-block;margin-top:.4rem;font-size:.66em;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);border-radius:999px;padding:.15rem .6rem;}
+
+/* ---------- language tabs ---------- */
+.tabs{display:flex;gap:.35rem;margin:1rem 0 .75rem;}
+.tabs button{flex:1;background:transparent;border:1px solid var(--line);color:var(--ink-dim);font-family:'Spectral',serif;font-size:.7em;letter-spacing:.1em;text-transform:uppercase;padding:.4rem;border-radius:8px;cursor:pointer;transition:.18s;}
+.tabs button.active{background:var(--gold);color:var(--chip-on-ink);border-color:var(--gold);font-weight:600;}
+.tabs button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.pane{display:none;}
+.pane.show{display:block;animation:fade .25s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(3px);}to{opacity:1;transform:none;}}
+.translit{color:var(--arabic);font-size:1.0em;line-height:1.85;font-style:italic;}
+.arabic{font-family:'Amiri',serif;direction:rtl;text-align:right;color:var(--arabic);font-size:1.55em;line-height:2.1;}
+.english{color:var(--ink-dim);font-size:.95em;line-height:1.7;}
+.doing{margin-top:.7rem;border-top:1px dashed var(--line);padding-top:.6rem;color:var(--ink-dim);font-size:.84em;}
+.doing b{color:var(--gold-soft);font-weight:600;}
+
+footer{text-align:center;padding:3rem 1rem 1rem;color:var(--ink-dim);font-size:.8em;border-top:1px solid var(--line);margin-top:2rem;}
+footer .amin{color:var(--gold);font-family:'Amiri',serif;font-size:1.5em;}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important;}
+}
+@media (max-width:430px){
+  .controls .lbl{display:none;}
+}
