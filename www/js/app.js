@@ -36,16 +36,32 @@ function note(n) {
   return el("div", { class: `note ${n.kind === "warn" ? "warn" : ""}`, html: n.html });
 }
 
+// ---------- posture descriptions for screen readers ----------
+const FIG_DESC = {
+  takbir: "Standing with both hands raised beside the head — opening takbir",
+  qiyam: "Standing with the hands folded — qiyam",
+  ruku: "Bowing with the hands on the knees — ruku'",
+  itidal: "Standing upright after bowing — i'tidal",
+  sujud: "Prostrating with the forehead on the ground — sujud",
+  jalsa: "Sitting back on the heels between prostrations — jalsa",
+  sujud2: "Prostrating with the forehead on the ground — second sujud",
+  stand: "Standing",
+  tashahhud: "Sitting with the right index finger raised — tashahhud",
+  final: "Sitting with the hands resting on the thighs — final sitting",
+  salam_r: "Sitting, head turned to the right — closing salam",
+  salam_l: "Sitting, head turned to the left — closing salam"
+};
+
 // ---------- render: a figure (single or pair) ----------
 function figureEl(move) {
   if (move.figurePair) {
-    const pair = el("div", { class: "figure pair" });
+    const pair = el("div", { class: "figure pair", role: "group", "aria-label": "Closing salam, turning right then left" });
     move.figurePair.forEach((f) => {
       const pose = el("div", { class: "pose" });
       pose.style.webkitMaskImage = `url(${FIG(f.src)})`;
       pose.style.maskImage = `url(${FIG(f.src)})`;
       pair.append(el("div", { class: "fwrap" },
-        el("div", { class: "figure" }, pose),
+        el("div", { class: "figure", role: "img", "aria-label": FIG_DESC[f.src] || f.caption }, pose),
         el("figcaption", {}, f.caption)
       ));
     });
@@ -56,6 +72,8 @@ function figureEl(move) {
     const pose = el("div", { class: "pose" });
     pose.style.webkitMaskImage = `url(${FIG(move.figure)})`;
     pose.style.maskImage = `url(${FIG(move.figure)})`;
+    box.setAttribute("role", "img");
+    box.setAttribute("aria-label", FIG_DESC[move.figure] || "");
     box.append(pose);
   }
   return box;
