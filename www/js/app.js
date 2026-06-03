@@ -64,11 +64,13 @@ function figureEl(move) {
 // ---------- render: one move card ----------
 function moveCard(move) {
   const head = el("div", { class: "move-head" },
-    el("h4", {}, `${move.n} · ${move.title}`),
-    el("div", { class: "pos" }, move.pos),
+    el("h4", { html: `${move.n} · ${move.title}` }),
+    move.pos ? el("div", { class: "pos" }, move.pos) : null,
     move.reps ? el("span", { class: "reps" }, move.reps) : null
   );
-  const top = el("div", { class: "move-top" }, figureEl(move), head);
+  const hasFigure = move.figure || move.figurePair;
+  const top = el("div", { class: hasFigure ? "move-top" : "move-top nofig" },
+    hasFigure ? figureEl(move) : null, head);
 
   const card = el("div", { class: "move" }, top);
 
@@ -113,7 +115,7 @@ function renderSections() {
   sections.forEach((s) => {
     const sec = el("section", { id: s.id });
     sec.append(el("div", { class: "section-head" },
-      el("span", { class: "num" }, s.num),
+      s.num ? el("span", { class: "num" }, s.num) : null,
       el("div", {},
         el("h2", {}, s.title),
         el("span", { class: "sub" }, s.sub)

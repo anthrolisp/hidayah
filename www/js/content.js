@@ -14,8 +14,21 @@ export const meta = {
 // Navigation is derived from section ids/labels below.
 export const sections = [
   {
+    id: "start",
+    nav: "Start Here",
+    title: "Before You Begin",
+    sub: "Orientation for new Muslims",
+    lede: `Islam is learned step by step. Begin with sincerity — the simple wish to worship God — and don't worry about getting everything perfect at once. Do your best, and keep learning.`,
+    type: "info",
+    notes: [
+      { kind: "info", html: `<b>About "<span class="sym">ﷺ</span>":</b> you will see <span class="sym">ﷺ</span> after the name of Prophet Muhammad <span class="sym">ﷺ</span>. It is read <em>salla Allahu ʿalayhi wa sallam</em> — "may Allah bless him and grant him peace." Muslims say or write it after mentioning him, out of love and respect.` },
+      { kind: "info", html: `<b>Before you pray:</b> as best you can, pray within the prayer's time, have wudu (or ghusl if it is needed), be clean, be dressed properly for prayer, and face the qibla (the direction of the Kaʿbah in Mecca). Do your best, and keep learning.` },
+      { kind: "warn", html: `<b>A beginner's guide:</b> this teaches one simple, careful method to get you praying. For detailed questions — and the finer points where the schools differ — follow a trusted local teacher or imam.` }
+    ]
+  },
+
+  {
     id: "wudu",
-    num: "١",            // Arabic-Indic numeral
     nav: "Wudu",
     title: "Wudu",
     sub: "Ablution · purifying before prayer",
@@ -41,8 +54,7 @@ export const sections = [
 
   {
     id: "counts",
-    num: "٢",
-    nav: "Rak'ahs",
+    nav: "Five Prayers",
     title: "The Five Prayers",
     sub: "Rak'ah counts · the obligatory (fard) units",
     type: "prayers",
@@ -60,82 +72,81 @@ export const sections = [
 
   {
     id: "salat",
-    num: "٣",
     nav: "The Prayer",
     title: "The Prayer, Step by Step",
     sub: "The postures & what is said",
-    lede: `A rak'ah is one full unit. Before the opening takbir, make the intention (niyyah) in your heart for the prayer you are about to pray — it is held silently, not said aloud. The figure beside each step shows the posture — stand inside the prayer mat and copy it. Tap the buttons to switch each passage between transliteration, Arabic, and English.`,
+    lede: `A rak'ah is one full unit of prayer: standing to recite, bowing, standing again, and two prostrations. The <b>first</b> rak'ah begins with the opening takbir (step 1) and runs through the two prostrations; each <b>later</b> rak'ah begins when you stand and recite Al-Fatihah again. You do not repeat the opening takbir, though "Allaahu Akbar" is still said as a movement takbir at many transitions. Before you start, make the intention (niyyah) in your heart for the prayer you are about to pray — it is held silently, not said aloud. Tap the buttons under each step to switch between transliteration, Arabic, and English.`,
     type: "moves",
     moves: [
       {
-        n: 1, figure: "takbir", title: "Opening — Takbir", pos: "Standing · qiyam",
+        n: 1, figure: "takbir", title: "Takbirat al-Ihram — Opening the Prayer", pos: "Standing · qiyam",
         translit: "Allaahu Akbar",
         arabic: "اللّٰهُ أَكْبَر",
         english: `"God is the Greatest."`,
-        doing: `<b>Do:</b> Raise both hands near the ears or shoulders (palms forward), then fold the hands — placement varies by school, so follow the practice you are learning. This first raising begins the prayer; raising the hands at the later takbirs is optional.`
+        doing: `<b>Do:</b> Raise both hands near the ears or shoulders (palms forward), say <em>Allaahu Akbar</em>, then fold the hands — placement varies by school, so follow the practice you are learning. This opening takbir (<em>takbirat al-ihram</em>) is said once and begins the whole prayer. You will say "Allaahu Akbar" again later as a movement takbir, but you never repeat this opening.`
       },
       {
-        n: 2, figure: "qiyam", title: "Al-Fatihah", pos: "Standing · qiyam",
+        n: 2, figure: "qiyam", title: "Al-Fatihah — The Opening Chapter", pos: "Standing · qiyam",
         translit: `Bismillaahir-Rahmaanir-Raheem<br>Alhamdu lillaahi rabbil-'aalameen<br>Ar-Rahmaanir-Raheem<br>Maaliki yawmid-deen<br>Iyyaaka na'budu wa iyyaaka nasta'een<br>Ihdinas-siraatal-mustaqeem<br>Siraatal-ladheena an'amta 'alayhim<br>Ghayril-maghdoobi 'alayhim wa lad-daalleen.<br>Aameen.`,
         arabic: `بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيم<br>الْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِين<br>الرَّحْمٰنِ الرَّحِيم<br>مَالِكِ يَوْمِ الدِّين<br>إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِين<br>اهْدِنَا الصِّرَاطَ الْمُسْتَقِيم<br>صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِم<br>غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّين<br>آمِين`,
         english: `In the name of God, the Most Gracious, the Most Merciful.<br>All praise is for God, Lord of all the worlds,<br>the Most Gracious, the Most Merciful,<br>Master of the Day of Judgement.<br>You alone we worship, and You alone we ask for help.<br>Guide us along the straight path —<br>the path of those You have blessed,<br>not of those who earned anger, nor of those who went astray. Amen.`,
         doing: `<b>Do:</b> Al-Fatihah is recited in every rak'ah and is required. In the first two rak'ahs it is recommended (sunnah) to follow it with another short surah or a few verses (e.g. Al-Ikhlas).`
       },
       {
-        n: 3, figure: "ruku", title: "Bowing — Ruku'", pos: "Bowing · ruku'", reps: "say 3 ×",
+        n: 3, figure: "ruku", title: "Ruku' — Bowing", pos: "Bowing", reps: "say 3 ×",
         translit: "Subhaana Rabbiyal-'Adheem",
         arabic: "سُبْحَانَ رَبِّيَ الْعَظِيم",
         english: `"Glory to my Lord, the Most Great."`,
         doing: `<b>Do:</b> Say <em>Allaahu Akbar</em>, then bow with hands on knees and back straight.`
       },
       {
-        n: 4, figure: "itidal", title: "Rising from Ruku'", pos: "Standing upright · i'tidal",
+        n: 4, figure: "itidal", title: "I'tidal — Standing After Bowing", pos: "Standing upright",
         translit: `Sami'a-llaahu liman hamidah<br>Rabbanaa wa lakal-hamd`,
         arabic: `سَمِعَ اللّٰهُ لِمَنْ حَمِدَه<br>رَبَّنَا وَلَكَ الْحَمْد`,
         english: `"God hears the one who praises Him."<br>"Our Lord, to You is all praise."`,
         doing: `<b>Do:</b> Stand fully upright before going down.`
       },
       {
-        n: 5, figure: "sujud", title: "First Prostration — Sujud", pos: "Prostrating · sujud", reps: "say 3 ×",
+        n: 5, figure: "sujud", title: "Sujud — First Prostration", pos: "Prostrating", reps: "say 3 ×",
         translit: "Subhaana Rabbiyal-A'laa",
         arabic: "سُبْحَانَ رَبِّيَ الْأَعْلَى",
         english: `"Glory to my Lord, the Most High."`,
         doing: `<b>Do:</b> Say <em>Allaahu Akbar</em> and prostrate — forehead, nose, palms, knees and toes on the ground.`
       },
       {
-        n: 6, figure: "jalsa", title: "Sitting between prostrations", pos: "Sitting · jalsa",
+        n: 6, figure: "jalsa", title: "Jalsa — Sitting Between Prostrations", pos: "Sitting",
         translit: "Rabbighfir lee",
         arabic: "رَبِّ اغْفِرْ لِي",
         english: `"My Lord, forgive me."`,
         doing: `<b>Do:</b> Sit upright briefly with the hands resting on the thighs.`
       },
       {
-        n: 7, figure: "sujud2", title: "Second Prostration — Sujud", pos: "Prostrating · sujud", reps: "say 3 ×",
+        n: 7, figure: "sujud2", title: "Sujud — Second Prostration", pos: "Prostrating", reps: "say 3 ×",
         translit: "Subhaana Rabbiyal-A'laa",
         arabic: "سُبْحَانَ رَبِّيَ الْأَعْلَى",
         english: `"Glory to my Lord, the Most High."`,
         doing: `<b>Do:</b> Say <em>Allaahu Akbar</em> and prostrate again, exactly as before. This completes one rak'ah.`
       },
       {
-        n: 8, figure: "stand", title: "Stand or Sit", pos: "End of the rak'ah",
-        doing: `<b>Do:</b> If another rak'ah remains, stand and begin the next rak'ah with Al-Fatihah. If this is the second rak'ah or the final one, stay seated for the tashahhud.`
+        n: 8, title: "End of the Rak'ah — Stand or Sit", pos: "After two prostrations",
+        doing: `<b>Do:</b> At the end of a rak'ah you either stand for the next one or sit for tashahhud. If another rak'ah remains, stand and begin again by reciting Al-Fatihah. If this is the second rak'ah, or the final one, stay seated for the tashahhud.`
       },
       {
-        n: 9, figure: "tashahhud", title: "Tashahhud", pos: "Sitting · after every 2nd rak'ah",
+        n: 9, figure: "tashahhud", title: "Tashahhud — The Testimony", pos: "Sitting · after every 2nd rak'ah",
         translit: `At-tahiyyaatu lillaahi was-salawaatu wat-tayyibaat<br>As-salaamu 'alayka ayyuhan-nabiyyu wa rahmatullaahi wa barakaatuh<br>As-salaamu 'alaynaa wa 'alaa 'ibaadillaahis-saaliheen<br>Ash-hadu an laa ilaaha illa-llaah<br>wa ash-hadu anna Muhammadan 'abduhu wa rasooluh`,
         arabic: `التَّحِيَّاتُ لِلّٰهِ وَالصَّلَوَاتُ وَالطَّيِّبَات<br>السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُه<br>السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللّٰهِ الصَّالِحِين<br>أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰه<br>وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُه`,
         english: `All greetings, prayers and good things are for God.<br>Peace be upon you, O Prophet, and God's mercy and blessings.<br>Peace be upon us and upon the righteous servants of God.<br>I bear witness that there is no god but God,<br>and I bear witness that Muhammad is His servant and messenger.`,
-        doing: `<b>Do:</b> Sit in tashahhud after every second rak'ah — i.e. after rak'ah 2 (and again in the final sitting). The right hand rests on the right thigh or knee; raise or extend only the index finger at the testimony. In the final sitting, continue with the salawat below.`
+        doing: `<b>Do:</b> Sit in tashahhud after every second rak'ah — i.e. after rak'ah 2 (and again in the final sitting). The right hand rests on the right thigh or knee; raise or extend the index finger when you reach the testimony of faith — "Ash-hadu an laa ilaaha illa-llaah, wa ash-hadu anna Muhammadan 'abduhu wa rasooluh." The exact finger movement varies by school, so follow a local teacher. In the final sitting, continue with the salawat below.`
       },
       {
-        n: 10, figure: "final", title: "Final Sitting — Salawat", pos: "Sitting · after the tashahhud",
+        n: 10, figure: "final", title: `Salawat — Blessings on the Prophet <span class="sym">ﷺ</span>`, pos: "Sitting · after the tashahhud",
         translit: `Allaahumma salli 'alaa Muhammad wa 'alaa aali Muhammad<br>kamaa sallayta 'alaa Ibraaheem wa 'alaa aali Ibraaheem<br>innaka Hameedun Majeed<br><br>Allaahumma baarik 'alaa Muhammad wa 'alaa aali Muhammad<br>kamaa baarakta 'alaa Ibraaheem wa 'alaa aali Ibraaheem<br>innaka Hameedun Majeed`,
         arabic: `اللّٰهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّد<br>كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيم<br>إِنَّكَ حَمِيدٌ مَجِيد<br><br>اللّٰهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّد<br>كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيم<br>إِنَّكَ حَمِيدٌ مَجِيد`,
         english: `O God, send blessings upon Muhammad and the family of Muhammad,<br>as You blessed Ibraheem and the family of Ibraheem;<br>indeed You are Praiseworthy, Glorious.<br><br>O God, bless Muhammad and the family of Muhammad,<br>as You blessed Ibraheem and the family of Ibraheem;<br>indeed You are Praiseworthy, Glorious.`,
-        doing: `<b>Do:</b> Recited only in the final sitting, after the tashahhud.`
+        doing: `<b>Do:</b> In the final sitting, after the tashahhud, send blessings on the Prophet <span class="sym">ﷺ</span> with these words.`
       },
       {
-        n: 11, title: "Closing — Tasleem", pos: "Sitting · turning the head",
+        n: 11, title: "Tasleem — Closing Peace", pos: "Sitting · turning the head",
         figurePair: [
           { src: "salam_r", caption: "right" },
           { src: "salam_l", caption: "then left" }
@@ -146,6 +157,6 @@ export const sections = [
         doing: `<b>Do:</b> Turn the face to the right, then the left. This ends the prayer.`
       }
     ],
-    closingNote: { kind: "info", html: `<b>Putting it together:</b><br><b>Fajr:</b> 2 rak'ahs → final sitting → tasleem.<br><b>Maghrib:</b> 2 rak'ahs → tashahhud → 1 rak'ah → final sitting → tasleem.<br><b>Dhuhr, Asr, Isha:</b> 2 rak'ahs → tashahhud → 2 rak'ahs → final sitting → tasleem.<br>In the first two rak'ahs, recite Al-Fatihah and then another short surah or a few verses. After the first two rak'ahs, recite Al-Fatihah only.` }
+    closingNote: { kind: "info", html: `<b>Putting it together:</b><br><b>Fajr — 2 rak'ahs:</b> rak'ah 1 → rak'ah 2 → tashahhud → salawat → tasleem.<br><b>Maghrib — 3 rak'ahs:</b> rak'ah 1 → rak'ah 2 → tashahhud → rak'ah 3 → tashahhud → salawat → tasleem.<br><b>Dhuhr, Asr, Isha — 4 rak'ahs:</b> rak'ah 1 → rak'ah 2 → tashahhud → rak'ah 3 → rak'ah 4 → tashahhud → salawat → tasleem.<br>The first tashahhud is the short sitting after two rak'ahs; the final tashahhud is followed by salawat and tasleem. In the first two rak'ahs of the obligatory prayer, recite Al-Fatihah and then a short surah or a few verses; in the later rak'ahs, recite Al-Fatihah only.` }
   }
 ];
