@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+<meta name="description" content="Hidayah — a companion for new Muslims. A beginner's reference for the ablution (wudu) and the prayer (salat), in transliteration, Arabic, and English. Valid across the four schools of Sunni jurisprudence.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<title>Salat — Hidayah</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<noscript>
+  <div style="max-width:640px;margin:2.5rem auto;padding:1.5rem;text-align:center;font-family:Georgia,serif;line-height:1.6;color:#2c2620;">
+    <h1 style="font-weight:500;">Salat</h1>
+    <p>A companion for new Muslims — a beginner's reference to the ablution (wudu) and the prayer (salat). This guide needs JavaScript enabled to display — please turn it on in your browser to read it.</p>
+  </div>
+</noscript>
+
+<div class="controls">
+  <div class="grp">
+    <span class="lbl">Text</span>
+    <button class="ctl-btn size minus" id="fsDown" aria-label="Decrease text size" title="Smaller text">A&minus;</button>
+    <button class="ctl-btn size plus" id="fsUp" aria-label="Increase text size" title="Larger text">A+</button>
+    <button class="reset-size" id="fsReset" aria-label="Reset text size">reset</button>
+  </div>
+  <div class="grp">
+    <button class="ctl-btn save" id="saveCopy" aria-label="Save a local copy" title="Download a standalone copy that works offline">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11M12 14l-4-4M12 14l4-4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg><span class="save-label">Save</span>
+    </button>
+    <button class="ctl-btn theme" id="themeToggle" aria-label="Toggle light and dark theme">
+      <span id="themeIcon" aria-hidden="true"></span><span id="themeLabel">Light</span>
+    </button>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kicker"></div>
+  <h1 id="title"></h1>
+  <p id="tagline"></p>
+</header>
+
+<p style="text-align:center;margin:.9rem 0 0;"><a href="./" style="color:var(--ink-dim);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;">&larr; Hidayah home</a></p>
+<nav id="nav" aria-label="Sections"></nav>
+
+<main id="main"></main>
+
+<footer>
+  <div class="amin">&#1570;&#1605;&#1610;&#1606;</div>
+  <p id="footer-text" style="margin-top:.6rem;"></p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

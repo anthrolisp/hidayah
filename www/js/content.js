@@ -5,7 +5,7 @@
 // ============================================================
 
 export const meta = {
-  title: "Hidayah",
+  title: "Salat",
   kicker: "A Companion for New Muslims",
   tagline: "Your first steps — the ablution (wudu) and the prayer (salat), each passage in transliteration, Arabic, and English.",
   footer: "A careful beginner method, intended to be sound across the four Sunni schools.<br>For finer points, ask a trusted local imam or teacher."

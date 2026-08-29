@@ -2,7 +2,7 @@
   "name": "Hidayah — A Companion for New Muslims",
   "short_name": "Hidayah",
   "description": "A companion for new Muslims, beginning with the ablution (wudu) and the prayer (salat), in transliteration, Arabic, and English.",
-  "start_url": "./index.html",
+  "start_url": "./salat.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",

@@ -1,57 +1,179 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
-<meta name="description" content="Hidayah — a companion for new Muslims. A beginner's reference for the ablution (wudu) and the prayer (salat), in transliteration, Arabic, and English. Valid across the four schools of Sunni jurisprudence.">
-<link rel="manifest" href="manifest.webmanifest">
+<title>Hidayah — Guidance</title>
+<link rel="icon" href="assets/icons/icon-192.png">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
-<title>Hidayah — A Companion for New Muslims</title>
-<link rel="stylesheet" href="css/styles.css">
+<meta property="og:title" content="Hidayah — Guidance">
+<meta property="og:description" content="Interested in learning more about Islam? Nine doors for anyone curious — a free Qur'an, how to pray, a person to ask. No strings, no follow-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anthrolisp.github.io/hidayah/">
+<meta property="og:image" content="https://anthrolisp.github.io/hidayah/assets/icons/icon-192.png">
+<link rel="stylesheet" href="css/fonts.css">
+<meta name="description" content="Interested in learning more about Islam? Doors for anyone curious. No analytics, no cookies.">
+<style>
+  :root{
+    --fs:1;
+    --bg:#f6f1e7; --bg2:#fbf7ee; --panel:#fffdf8;
+    --ink:#2c2620; --ink-dim:#6f6555;
+    --gold:#9c7521; --line:#e0d6c2;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d1117; --bg2:#16202b; --panel:#141b22;
+    --ink:#e8e3d6; --ink-dim:#9aa3ab;
+    --gold:#c9a24b; --line:#2a3543;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0d1117; --bg2:#16202b; --panel:#141b22;
+      --ink:#e8e3d6; --ink-dim:#9aa3ab;
+      --gold:#c9a24b; --line:#2a3543;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 600px at 50% -10%, var(--bg2) 0%, transparent 60%), var(--bg);
+    color:var(--ink);
+    font-family:'Spectral', Georgia, 'Times New Roman', serif;
+    font-size:calc(1rem * var(--fs));
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+    transition:background-color .4s ease,color .4s ease;
+  }
+  .controls{display:flex; align-items:center; justify-content:space-between; padding:.6rem .9rem}
+  .controls .grp{display:flex; align-items:center; gap:.4rem}
+  .controls .lbl{font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-dim); margin-right:.15rem}
+  .ctl-btn.size{width:2rem; height:2rem; padding:0; justify-content:center; font-family:'Cormorant Garamond', Georgia, serif; font-weight:600}
+  .reset-size{font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; background:none; border:none; color:var(--ink-dim); cursor:pointer; text-decoration:underline; text-underline-offset:3px; opacity:.7}
+  .reset-size:hover{color:var(--gold); opacity:1}
+  .ctl-btn{
+    background:transparent; border:1px solid var(--line); color:var(--ink-dim);
+    border-radius:999px; cursor:pointer; height:2rem; padding:0 .85rem;
+    font-family:'Spectral', Georgia, serif; font-size:.72rem;
+    letter-spacing:.12em; text-transform:uppercase;
+    display:flex; align-items:center; gap:.4rem; transition:.18s;
+  }
+  .ctl-btn:hover{color:var(--gold); border-color:var(--gold)}
+  main{max-width:36rem; margin:0 auto; padding:0 1.25rem 4.5rem}
+  header{text-align:center; padding:1.6rem 0 2rem; border-bottom:1px solid var(--line); margin-bottom:1rem}
+  .kicker{letter-spacing:.42em; text-transform:uppercase; font-size:.66rem; color:var(--gold); margin-bottom:1rem}
+  h1{font-family:'Cormorant Garamond', Georgia, serif; font-weight:500;
+     font-size:clamp(2.1rem, 7vw, 3.1rem); line-height:1.1}
+  .tagline{color:var(--ink-dim); font-style:italic; margin:1rem auto 0; max-width:34ch; font-size:.95em}
+  header::after{content:"\06DE"; display:block; color:var(--gold); font-size:1.4rem; margin-top:1.1rem; opacity:.7}
+  .lede{margin:1.6rem auto .5rem; max-width:32rem; text-align:center}
+  .lede-sub{color:var(--ink-dim); font-style:italic; font-size:.95em; text-align:center; max-width:30rem; margin:0 auto 1.4rem}
+  h2{font-family:'Spectral', Georgia, serif; font-weight:600;
+     font-size:.74rem; letter-spacing:.22em; text-transform:uppercase;
+     color:var(--gold); text-align:center; margin:2.6rem 0 1.1rem}
+  ul{list-style:none}
+  li{margin:0 0 .8rem}
+  li.gap{margin-top:1.7rem}
+  a.row{
+    display:block; background:var(--panel); border:1px solid var(--line);
+    border-radius:12px; padding:.95rem 1.15rem; text-decoration:none; color:inherit;
+    transition:border-color .2s;
+  }
+  a.row:hover{border-color:var(--gold)}
+  a.row strong{display:block; font-family:'Cormorant Garamond', Georgia, serif;
+               font-weight:600; font-size:1.18em; color:var(--ink)}
+  a.row:hover strong{color:var(--gold)}
+  a.row span{display:block; font-size:.87em; color:var(--ink-dim); margin-top:.15rem}
+  footer{margin-top:3.2rem; font-size:.8rem; color:var(--ink-dim); text-align:center;
+         border-top:1px solid var(--line); padding-top:1.4rem}
+  footer .orn{color:var(--gold); opacity:.7; font-size:1.1rem; display:block; margin-bottom:.6rem}
+</style>
 </head>
 <body>
-
-<noscript>
-  <div style="max-width:640px;margin:2.5rem auto;padding:1.5rem;text-align:center;font-family:Georgia,serif;line-height:1.6;color:#2c2620;">
-    <h1 style="font-weight:500;">Hidayah</h1>
-    <p>A companion for new Muslims — a beginner's reference to the ablution (wudu) and the prayer (salat). This guide needs JavaScript enabled to display — please turn it on in your browser to read it.</p>
-  </div>
-</noscript>
-
 <div class="controls">
   <div class="grp">
     <span class="lbl">Text</span>
-    <button class="ctl-btn size minus" id="fsDown" aria-label="Decrease text size" title="Smaller text">A&minus;</button>
-    <button class="ctl-btn size plus" id="fsUp" aria-label="Increase text size" title="Larger text">A+</button>
+    <button class="ctl-btn size" id="fsDown" aria-label="Decrease text size" title="Smaller text">A&minus;</button>
+    <button class="ctl-btn size" id="fsUp" aria-label="Increase text size" title="Larger text">A+</button>
     <button class="reset-size" id="fsReset" aria-label="Reset text size">reset</button>
   </div>
-  <div class="grp">
-    <button class="ctl-btn save" id="saveCopy" aria-label="Save a local copy" title="Download a standalone copy that works offline">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11M12 14l-4-4M12 14l4-4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg><span class="save-label">Save</span>
-    </button>
-    <button class="ctl-btn theme" id="themeToggle" aria-label="Toggle light and dark theme">
-      <span id="themeIcon" aria-hidden="true"></span><span id="themeLabel">Light</span>
-    </button>
-  </div>
+  <button class="ctl-btn" id="themeToggle" aria-label="Toggle light and dark theme"><span id="themeLabel">Dark</span></button>
 </div>
+<main>
+  <header>
+    <div class="kicker">Guidance</div>
+    <h1>Hidayah</h1>
+    <p class="tagline">Interested in learning more about Islam?</p>
+  </header>
 
-<header>
-  <div class="kicker" id="kicker"></div>
-  <h1 id="title"></h1>
-  <p id="tagline"></p>
-</header>
+  <p class="lede">Maybe you found one of our free Qur&rsquo;ans in a caf&eacute;. Maybe a search brought you here. However you arrived &mdash; whether you&rsquo;re simply curious, already exploring, or interested in Islam&rsquo;s paths &mdash; Salafi, Sufi, or unsure what those words even mean &mdash; <strong>this is for you.</strong> No strings, no follow-up.</p>
+  <p class="lede-sub">And if you&rsquo;d ever like to talk with someone, or meet other Muslims and converts nearby &mdash; the last door below is a person.</p>
 
-<nav id="nav" aria-label="Sections"></nav>
+  <ul>
+    <li><a class="row" href="https://ejannah.com/products/the-clear-quran%C2%AE-series-by-dr-mustafa-khattab" target="_blank" rel="noopener">
+      <strong>A free copy of the Qur&rsquo;an</strong>
+      <span>For a friend, or if you don&rsquo;t have one &mdash; pay only shipping.</span></a></li>
+    <li><a class="row" href="https://quran.com/1" target="_blank" rel="noopener">
+      <strong>Read it online now</strong>
+      <span>The same Clear Qur&rsquo;an translation, verse by verse, free &mdash; with the Arabic recited aloud.</span></a></li>
+    <li><a class="row" href="https://theclearquran.org/tcq-audiobook/" target="_blank" rel="noopener">
+      <strong>Hear it in English</strong>
+      <span>The Clear Qur&rsquo;an translation, as a dramatized audiobook.</span></a></li>
+    <li><a class="row" href="https://www.beingmuslim.org/" target="_blank" rel="noopener">
+      <strong>What Muslims actually do</strong>
+      <span>A calm, practical book &mdash; belief, prayer, everyday life.</span></a></li>
+    <li><a class="row" href="https://www.google.com/maps/search/masjid+near+me" target="_blank" rel="noopener">
+      <strong>A mosque near you</strong>
+      <span>If you ever want to see one. Visitors are normal; just ask at the door.</span></a></li>
+    <li class="gap"><a class="row" href="salat.html">
+      <strong>How to pray</strong>
+      <span>Step by step, from the very beginning &mdash; wudu and salat.</span></a></li>
+    <li><a class="row" href="https://sajada.com/products/step-by-step-salah" target="_blank" rel="noopener">
+      <strong>A prayer mat you can read</strong>
+      <span>The words printed where you&rsquo;ll see them.</span></a></li>
+    <li><a class="row" href="https://www.learningroots.us/products/read-rise-qaidah" target="_blank" rel="noopener">
+      <strong>Learn to read the Qur&rsquo;an</strong>
+      <span>The Arabic script itself, from zero.</span></a></li>
+    <li><a class="row" href="https://wa.me/17349267652?text=Salaam%20%E2%80%94%20I%20found%20your%20Hidayah%20page%20and%20have%20a%20question." target="_blank" rel="noopener">
+      <strong>Ask a person</strong>
+      <span>One person, on WhatsApp, who will just answer &mdash; or point you to other Muslims and converts nearby. Not a group, not a list.</span></a></li>
+  </ul>
 
-<main id="main"></main>
-
-<footer>
-  <div class="amin">&#1570;&#1605;&#1610;&#1606;</div>
-  <p id="footer-text" style="margin-top:.6rem;"></p>
-</footer>
-
-<script type="module" src="js/app.js"></script>
+  <footer>
+    <span class="orn">&#1758;</span>
+    No analytics. No cookies. Nothing here is shared with anyone.
+  </footer>
+</main>
+<script>
+  // same storage keys as the salat app, so choices carry across the tree
+  const KEY = "salat.theme", FSKEY = "salat.fontSize",
+        root = document.documentElement,
+        label = document.getElementById("themeLabel");
+  const MIN = 0.85, MAX = 1.6, STEP = 0.1;
+  let fs = 1;
+  function applyFS(){
+    root.style.setProperty("--fs", fs.toFixed(2));
+    try { localStorage.setItem(FSKEY, fs.toFixed(2)); } catch(e){}
+  }
+  let savedFS = null; try { savedFS = parseFloat(localStorage.getItem(FSKEY)); } catch(e){}
+  if (savedFS && savedFS >= MIN && savedFS <= MAX) fs = savedFS;
+  root.style.setProperty("--fs", fs.toFixed(2));
+  document.getElementById("fsUp").addEventListener("click", () => { fs = Math.min(MAX, +(fs + STEP).toFixed(2)); applyFS(); });
+  document.getElementById("fsDown").addEventListener("click", () => { fs = Math.max(MIN, +(fs - STEP).toFixed(2)); applyFS(); });
+  document.getElementById("fsReset").addEventListener("click", () => { fs = 1; applyFS(); });
+  function apply(t){
+    if(t){ root.setAttribute("data-theme", t); } else { root.removeAttribute("data-theme"); }
+    const dark = t ? t === "dark"
+                   : matchMedia("(prefers-color-scheme: dark)").matches;
+    label.textContent = dark ? "Light" : "Dark";
+  }
+  let saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  apply(saved);
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    const dark = root.getAttribute("data-theme") === "dark" ||
+      (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    const next = dark ? "light" : "dark";
+    try { localStorage.setItem(KEY, next); } catch(e){}
+    apply(next);
+  });
+</script>
 </body>
 </html>
