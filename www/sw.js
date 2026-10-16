@@ -1,7 +1,7 @@
 // sw.js — offline caching for the web/PWA build.
 // Capacitor serves files locally and ignores this, so it's safe everywhere.
 // Bump CACHE when you change any cached file.
-const CACHE = "hidayah-v17";
+const CACHE = "hidayah-v18";
 
 const CORE = [
   "./",
@@ -63,6 +63,8 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const { request } = e;
   if (request.method !== "GET") return;
+  // /card/ is updated by hand and must never be served stale: network only, never cached.
+  if (new URL(request.url).pathname.includes("/card/")) return;
   // cache-first for our own assets; network fallback for fonts/CDN
   e.respondWith(
     caches.match(request).then((hit) => {
